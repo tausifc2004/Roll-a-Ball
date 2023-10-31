@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 0;
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
+    public GameObject level1Wall;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
         count = 0;
         SetCountText();
         winTextObject.SetActive(false);
+        level1Wall.SetActive(true);
     }
 
     void OnMove(InputValue movementValue)
@@ -40,11 +42,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void toggleExitWall()
+    {
+        if (count >= 4)
+        {
+            level1Wall.SetActive(false);
+        }
+    }
+
     void FixedUpdate()
     {
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
         rb.AddForce(movement * speed);
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -54,7 +63,7 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             count = count + 1;
             SetCountText();
+            toggleExitWall();
         }
-        
     }
 }

@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public GameObject winTextObject;
     public GameObject level1Wall;
     public GameObject Player;
+    public GameObject PickupSound;
 
     // Start is called before the first frame update
     void Start()
@@ -81,6 +82,8 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("PickUp"))
         {
             other.gameObject.SetActive(false);
+            PickupSound.GetComponent<AudioSource>().Play();
+            speed += 1.0f;
             count = count + 1;
             SetCountText();
             toggleExitWall();

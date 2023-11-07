@@ -786,9 +786,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  jumpForce: 2
+  isGrounded: 0
   countText: {fileID: 1236732885}
   winTextObject: {fileID: 1170950771}
   level1Wall: {fileID: 361913101}
+  Player: {fileID: 365543794}
 --- !u!114 &365543796
 MonoBehaviour:
   m_ObjectHideFlags: 0

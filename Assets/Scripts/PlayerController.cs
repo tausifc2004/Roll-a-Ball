@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
     public GameObject level1Wall;
+    public GameObject Player;
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +68,11 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             isGrounded = false;
+        }
+
+        if (Player.transform.position.y <= -45)
+        {
+            Player.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
         }
     }
 

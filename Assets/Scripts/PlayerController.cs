@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
-    public int count;
+    private int count;
     private float movementX;
     private float movementY;
     public float speed = 0;

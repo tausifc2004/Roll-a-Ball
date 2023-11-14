@@ -822,7 +822,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7303892edd744b4195782564151430e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
   speed: 10
   jumpForce: 2
   isGrounded: 0
@@ -3607,7 +3606,7 @@ MonoBehaviour:
   lostText: {fileID: 1325028046}
   retryText: {fileID: 1486158194}
   gameOverMenu: {fileID: 1135048000}
-  targetTime: 60
+  targetTime: 45
 --- !u!43 &925037226
 Mesh:
   m_ObjectHideFlags: 0

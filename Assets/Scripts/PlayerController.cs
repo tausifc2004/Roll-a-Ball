@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     void SetCountText()
     {
         countText.text = "Count: " + count.ToString();
-        if (count >= 12)
+        if (count >= 16)
         {
             winTextObject.SetActive(true);
         }
@@ -84,6 +84,14 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             PickupSound.GetComponent<AudioSource>().Play();
             speed += 1.0f;
+            count = count + 1;
+            SetCountText();
+            toggleExitWall();
+        } else if (other.gameObject.CompareTag("JumpPickUp"))
+        {
+            other.gameObject.SetActive(false);
+            PickupSound.GetComponent<AudioSource>().Play();
+            jumpForce += 0.5f;
             count = count + 1;
             SetCountText();
             toggleExitWall();

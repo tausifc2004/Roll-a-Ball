@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PickUp
   - ExitWall
+  - JumpPickUp
   layers:
   - Default
   - TransparentFX

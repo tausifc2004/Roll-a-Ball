@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,9 +16,11 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded;
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
+    public GameObject retryTextObject;
     public GameObject level1Wall;
     public GameObject Player;
     public GameObject PickupSound;
+    [SerializeField] private GameObject gameOverMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -40,9 +43,12 @@ public class PlayerController : MonoBehaviour
     void SetCountText()
     {
         countText.text = "Count: " + count.ToString();
-        if (count >= 12)
+        if (count >= 16)
         {
+            gameOverMenu.SetActive(true);
             winTextObject.SetActive(true);
+            retryTextObject.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 
@@ -75,6 +81,15 @@ public class PlayerController : MonoBehaviour
         {
             Player.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
         }
+
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -84,6 +99,14 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             PickupSound.GetComponent<AudioSource>().Play();
             speed += 1.0f;
+            count = count + 1;
+            SetCountText();
+            toggleExitWall();
+        } else if (other.gameObject.CompareTag("JumpPickUp"))
+        {
+            other.gameObject.SetActive(false);
+            PickupSound.GetComponent<AudioSource>().Play();
+            jumpForce += 0.5f;
             count = count + 1;
             SetCountText();
             toggleExitWall();

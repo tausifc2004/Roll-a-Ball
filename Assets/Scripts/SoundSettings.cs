@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
+// Reference: https://www.youtube.com/watch?v=_m6nTQOMFl0
+
 public class SoundSettings : MonoBehaviour
 {
     [SerializeField] Slider masterSlider;
